@@ -146,43 +146,43 @@ func processSetupCommand(arguments []string) bool {
 		}
 
 		fmt.Printf("supported commands:\n\n")
-		fmt.Printf("  help                       (h)      - display this message\n\n")
+		fmt.Printf("  help                       		(h)      		- display this message\n\n")
 
-		fmt.Printf("  gen-peer-identity [DIR]    (peer)   - create private key in: %q\n", "DIR/"+peerPrivateKeyFilename)
-		fmt.Printf("                                        and the public key in: %q\n", "DIR/"+peerPublicKeyFilename)
+		fmt.Printf("  gen-peer-identity d=[DIR]    		(peer)   		- create private key in: %q\n", "DIR/"+peerPrivateKeyFilename)
+		fmt.Printf("                                        			and the public key in: %q\n", "DIR/"+peerPublicKeyFilename)
 		fmt.Printf("\n")
 
-		fmt.Printf("  gen-rpc-cert [DIR]         (rpc)    - create private key in:  %q\n", "DIR/"+rpcPrivateKeyFilename)
-		fmt.Printf("                                        and the certificate in: %q\n", "DIR/"+rpcCertificateKeyFilename)
+		fmt.Printf("  gen-rpc-cert d=[DIR]         		(rpc)    		- create private key in:  %q\n", "DIR/"+rpcPrivateKeyFilename)
+		fmt.Printf("    	                                    			and the certificate in: %q\n", "DIR/"+rpcCertificateKeyFilename)
 		fmt.Printf("\n")
 
-		fmt.Printf("  gen-rpc-cert [DIR] [IPs...]         - create private key in:  %q\n", "DIR/"+rpcPrivateKeyFilename)
-		fmt.Printf("                                        and the certificate in: %q\n", "DIR/"+rpcCertificateKeyFilename)
+		fmt.Printf("  gen-rpc-cert d=[DIR] a=[IPs...]  			       	- create private key in:  %q\n", "DIR/"+rpcPrivateKeyFilename)
+		fmt.Printf("                                        			and the certificate in: %q\n", "DIR/"+rpcCertificateKeyFilename)
 		fmt.Printf("\n")
 
-		fmt.Printf("  gen-proof-identity [DIR]   (proof)  - create private key in: %q\n", "DIR/"+proofPrivateKeyFilename)
-		fmt.Printf("                                        the public key in:     %q\n", "DIR/"+proofPublicKeyFilename)
-		fmt.Printf("                                        and signing keys in:  %q and: %q\n", "DIR/"+proofLiveSigningKeyFilename, "DIR/"+proofTestSigningKeyFilename)
+		fmt.Printf("  gen-proof-identity d=[DIR] v=[VER]   	(proof)  		- create private key in: %q\n", "DIR/"+proofPrivateKeyFilename)
+		fmt.Printf("                                        			the public key in:     %q\n", "DIR/"+proofPublicKeyFilename)
+		fmt.Printf("                                        			and signing keys in:  %q and: %q\n", "DIR/"+proofLiveSigningKeyFilename, "DIR/"+proofTestSigningKeyFilename)
 		fmt.Printf("\n")
 
-		fmt.Printf("  dns-txt                    (txt)    - display the data to put in a dbs TXT record\n")
+		fmt.Printf("  dns-txt                    		(txt)    		- display the data to put in a dbs TXT record\n")
 		fmt.Printf("\n")
 
-		fmt.Printf("  start                      (run)    - just run the program, same as no arguments\n")
-		fmt.Printf("                                        for convienience when passing script arguments\n")
+		fmt.Printf("  start                      		(run)    		- just run the program, same as no arguments\n")
+		fmt.Printf("                                        			for convienience when passing script arguments\n")
 		fmt.Printf("\n")
 
-		fmt.Printf("  block S [E [FILE]]         (b)      - dump block(s) as a JSON structures to stdout/file\n")
+		fmt.Printf("  block S [E [FILE]]         		(b)      		- dump block(s) as a JSON structures to stdout/file\n")
 		fmt.Printf("\n")
 
-		fmt.Printf("  save-blocks FILE           (save)   - dump all blocks to a file\n")
+		fmt.Printf("  save-blocks FILE           		(save)   		- dump all blocks to a file\n")
 		fmt.Printf("\n")
 
-		fmt.Printf("  load-blocks FILE           (load)   - restore all blocks from a file\n")
-		fmt.Printf("                                        only runs if database is deleted first\n")
+		fmt.Printf("  load-blocks FILE           		(load)   		- restore all blocks from a file\n")
+		fmt.Printf("                                        			only runs if database is deleted first\n")
 		fmt.Printf("\n")
 
-		fmt.Printf("  delete-down NUMBER         (dd)     - delete blocks in descending order\n")
+		fmt.Printf("  delete-down NUMBER         		(dd)     		- delete blocks in descending order\n")
 		fmt.Printf("\n")
 
 		exitwithstatus.Exit(1)

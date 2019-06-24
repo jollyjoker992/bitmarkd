@@ -176,7 +176,7 @@ then
   for g in ${generate_items}
   do
     (
-      cd "${config_dir}" && bitmarkd --config-file="${config}" "${g}" "${config_dir}"
+      cd "${config_dir}" && bitmarkd --config-file="${config}" "${g}" d="${config_dir}"
     )
   done
   exit 0
