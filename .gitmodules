@@ -13,9 +13,9 @@
 [submodule "vendor/github.com/bitmark-inc/logger"]
 	path = vendor/github.com/bitmark-inc/logger
 	url = https://github.com/bitmark-inc/logger
-[submodule "vendor/github.com/pebbe/zmq4"]
-	path = vendor/github.com/pebbe/zmq4
-	url = https://github.com/pebbe/zmq4
+[submodule "vendor/github.com/jollyjoker992/zmq4"]
+	path = vendor/github.com/jollyjoker992/zmq4
+	url = https://github.com/jollyjoker992/zmq4
 [submodule "vendor/github.com/syndtr/goleveldb"]
 	path = vendor/github.com/syndtr/goleveldb
 	url = https://github.com/syndtr/goleveldb

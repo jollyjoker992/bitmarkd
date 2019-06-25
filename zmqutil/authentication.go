@@ -8,7 +8,7 @@ package zmqutil
 import (
 	"sync"
 
-	zmq "github.com/pebbe/zmq4"
+	zmq "github.com/jollyjoker992/zmq4"
 )
 
 // to ensure only one auth start

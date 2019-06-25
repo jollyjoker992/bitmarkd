@@ -8,7 +8,7 @@ package publish
 import (
 	"time"
 
-	zmq "github.com/pebbe/zmq4"
+	zmq "github.com/jollyjoker992/zmq4"
 
 	"github.com/bitmark-inc/bitmarkd/messagebus"
 	"github.com/bitmark-inc/bitmarkd/mode"

@@ -11,13 +11,14 @@ require (
 	github.com/golang/mock v1.3.1
 	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
+	github.com/jollyjoker992/zmq4 v1.0.1-0.20190625062429-31940580ba2c
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/miekg/dns v1.1.9
 	github.com/mitchellh/mapstructure v1.1.2 // indirect
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/pebbe/zmq4 v1.0.0
+	github.com/pebbe/zmq4 v1.0.0 // indirect
 	github.com/stretchr/testify v1.3.0
 	github.com/syndtr/goleveldb v1.0.0
 	github.com/urfave/cli v1.20.0

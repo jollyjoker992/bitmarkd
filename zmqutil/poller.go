@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	zmq "github.com/pebbe/zmq4"
+	zmq "github.com/jollyjoker992/zmq4"
 )
 
 // Poller - structure to hold a poller

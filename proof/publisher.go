@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	zmq "github.com/pebbe/zmq4"
+	zmq "github.com/jollyjoker992/zmq4"
 	"golang.org/x/crypto/ed25519"
 
 	"github.com/bitmark-inc/bitmarkd/account"

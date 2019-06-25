@@ -9,7 +9,7 @@ import (
 	util "github.com/bitmark-inc/bitmarkd/util"
 	zmqutil "github.com/bitmark-inc/bitmarkd/zmqutil"
 	gomock "github.com/golang/mock/gomock"
-	zmq4 "github.com/pebbe/zmq4"
+	zmq4 "github.com/jollyjoker992/zmq4"
 	reflect "reflect"
 )
 

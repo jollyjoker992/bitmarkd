@@ -6,7 +6,7 @@
 package zmqutil
 
 import (
-	zmq "github.com/pebbe/zmq4"
+	zmq "github.com/jollyjoker992/zmq4"
 )
 
 // NewMonitor - return a socket connection to the monitoring channel of another socket

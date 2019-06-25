@@ -10,7 +10,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	zmq "github.com/pebbe/zmq4"
+	zmq "github.com/jollyjoker992/zmq4"
 
 	"github.com/bitmark-inc/bitmarkd/announce"
 	"github.com/bitmark-inc/bitmarkd/blockheader"
