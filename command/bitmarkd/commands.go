@@ -69,8 +69,7 @@ func processSetupCommand(arguments []string) bool {
 		privateKeyFilename := getFilenameWithDirectory(arg, peerPrivateKeyFilename)
 		err := zmqutil.MakeKeyPair(publicKeyFilename, privateKeyFilename)
 		if nil != err {
-			fmt.Printf("cannot generate private key: %q and public key: %q\n", privateKeyFilename, publicKeyFilename)
-			fmt.Printf("error generating server key pair: %s\n", err)
+			fmt.Printf("generate private key: %q and public key: %q error: %s\n", privateKeyFilename, publicKeyFilename, err)
 			exitwithstatus.Exit(1)
 		}
 		fmt.Printf("generated private key: %q and public key: %q\n", privateKeyFilename, publicKeyFilename)
@@ -87,8 +86,7 @@ func processSetupCommand(arguments []string) bool {
 
 		err := makeSelfSignedCertificate("rpc", certificateFilename, privateKeyFilename, 0 != len(addresses), addresses)
 		if nil != err {
-			fmt.Printf("cannot generate RPC key: %q and certificate: %q\n", privateKeyFilename, certificateFilename)
-			fmt.Printf("error generating RPC key/certificate: %s\n", err)
+			fmt.Printf("generate RPC key: %q and certificate: %q error: %s\n", privateKeyFilename, certificateFilename, err)
 			exitwithstatus.Exit(1)
 		}
 		fmt.Printf("generated RPC key: %q and certificate: %q\n", privateKeyFilename, certificateFilename)
@@ -96,33 +94,36 @@ func processSetupCommand(arguments []string) bool {
 	case "gen-proof-identity", "proof":
 		publicKeyFilename := getFilenameWithDirectory(arg, proofPublicKeyFilename)
 		privateKeyFilename := getFilenameWithDirectory(arg, proofPrivateKeyFilename)
-		liveSigningKeyFilename := getFilenameWithDirectory(arg, proofLiveSigningKeyFilename)
-		testSigningKeyFilename := getFilenameWithDirectory(arg, proofTestSigningKeyFilename)
 		err := zmqutil.MakeKeyPair(publicKeyFilename, privateKeyFilename)
 		if nil != err {
-			fmt.Printf("cannot generate private key: %q and public key: %q\n", privateKeyFilename, publicKeyFilename)
-			fmt.Printf("error generating server key pair: %s\n", err)
+			fmt.Printf("generate private key: %q and public key: %q error: %s\n", privateKeyFilename, publicKeyFilename, err)
 			exitwithstatus.Exit(1)
 		}
 
+		liveSigningKeyFilename := getFilenameWithDirectory(arg, proofLiveSigningKeyFilename)
+		testSigningKeyFilename := getFilenameWithDirectory(arg, proofTestSigningKeyFilename)
 		version := "v2" // default is v2 twelve seed
 		if v, ok := arg["v"]; ok {
 			version = v
 		}
 
-		if err := makeSigningKey(version, false, liveSigningKeyFilename); err != nil {
-			fmt.Printf("cannot generate the signing key for livenet: %q\n", liveSigningKeyFilename)
-			fmt.Printf("error generating the signing key for livenet: %s\n", err)
-			exitwithstatus.Exit(1)
+		if err := makeSigningKey(version, false, liveSigningKeyFilename); nil != err {
+			fmt.Printf("generate the signing key for livenet: %q error: %s\n", liveSigningKeyFilename, err)
+			goto singingKeyFailed
 		}
-		if err := makeSigningKey(version, true, testSigningKeyFilename); err != nil {
-			fmt.Printf("cannot generate the signing key for testnet: %q\n", testSigningKeyFilename)
-			fmt.Printf("error generating the signing key for testnet: %s\n", err)
-			exitwithstatus.Exit(1)
+		if err := makeSigningKey(version, true, testSigningKeyFilename); nil != err {
+			fmt.Printf(" generate the signing key for testnet: %q error: %s\n", testSigningKeyFilename, err)
+			goto singingKeyFailed
 		}
 
 		fmt.Printf("generated private key: %q and public key: %q\n", privateKeyFilename, publicKeyFilename)
 		fmt.Printf("generated signing keys: %q and %q\n", liveSigningKeyFilename, testSigningKeyFilename)
+		goto done
+
+	singingKeyFailed:
+		_ = os.Remove(publicKeyFilename)
+		_ = os.Remove(privateKeyFilename)
+		exitwithstatus.Exit(1)
 
 	case "dns-txt", "txt":
 		return false // defer processing until configuration is read
@@ -188,6 +189,7 @@ func processSetupCommand(arguments []string) bool {
 		exitwithstatus.Exit(1)
 	}
 
+done:
 	// indicate processing complete and prefor normal exit from main
 	return true
 }
